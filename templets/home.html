@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Customer Churn Prediction System{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Customer Churn Prediction System</h1>
+        <p>Predict customer churn with AI-powered machine learning</p>
+        <a href="/predict" class="btn btn-primary">
+            <i class="fas fa-magic"></i> Start Prediction
+        </a>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="container" style="padding: 4rem 0;">
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">78.82%</div>
+            <div class="stat-label">Model Accuracy</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">7,032</div>
+            <div class="stat-label">Training Records</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">19</div>
+            <div class="stat-label">Features Analyzed</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">
+                <i class="fas fa-tree"></i> Random Forest
+            </div>
+            <div class="stat-label">Algorithm</div>
+        </div>
+    </div>
+</section>
+
+<!-- About Preview Section -->
+<section class="container about">
+    <h2 class="section-title">What is <span>Churn Prediction?</span></h2>
+    
+    <div class="about-grid">
+        <div class="about-card">
+            <h3><i class="fas fa-chart-line"></i> Why It Matters</h3>
+            <p>Customer churn is one of the biggest challenges for businesses. Identifying at-risk customers before they leave helps you retain valuable relationships and maximize lifetime value.</p>
+        </div>
+        <div class="about-card">
+            <h3><i class="fas fa-brain"></i> How It Works</h3>
+            <p>Our AI model analyzes 19 customer features including service usage, demographics, and billing patterns to predict the likelihood of churn with 78.82% accuracy.</p>
+        </div>
+        <div class="about-card">
+            <h3><i class="fas fa-target"></i> Take Action</h3>
+            <p>Once you identify at-risk customers, implement targeted retention strategies like special offers, improved support, or service upgrades to prevent churn.</p>
+        </div>
+    </div>
+
+    <!-- Workflow -->
+    <div class="workflow">
+        <h3><i class="fas fa-cog"></i> Our Prediction Workflow</h3>
+        <div class="workflow-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <p><strong>Input Data</strong><br>Enter customer details</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <p><strong>Feature Engineering</strong><br>Process and normalize data</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <p><strong>ML Prediction</strong><br>Run Random Forest model</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <p><strong>Get Results</strong><br>View churn probability</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

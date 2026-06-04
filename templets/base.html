@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Customer Churn Prediction System{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-brand">
+                <i class="fas fa-brain"></i>
+                ChurnPredict
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" {% if request.endpoint == 'home' %}class="active"{% endif %}>Home</a></li>
+                <li><a href="/predict" {% if request.endpoint == 'predict_page' %}class="active"{% endif %}>Predict</a></li>
+                <li><a href="/about" {% if request.endpoint == 'about' %}class="active"{% endif %}>About</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Customer Churn Prediction System. All rights reserved.</p>
+            <p>Powered by Machine Learning &bull; Built with Flask & Random Forest</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

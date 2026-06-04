@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction Result - Customer Churn Prediction System{% endblock %}
+
+{% block content %}
+<section class="result-container container">
+    <div class="result-card {{ result_class }}">
+        <div class="result-icon">
+            {% if result_class == 'churn' %}
+                ⚠️
+            {% else %}
+                ✅
+            {% endif %}
+        </div>
+        <div class="result-title">{{ result }}</div>
+        <div class="result-description">
+            {% if result_class == 'churn' %}
+                This customer shows signs of potential churn. Consider implementing retention strategies such as special offers, improved support, or service upgrades.
+            {% else %}
+                This customer is likely to remain loyal. Focus on maintaining service quality and regularly engage with them to strengthen the relationship.
+            {% endif %}
+        </div>
+        
+        <div class="confidence-bar">
+            <div class="confidence-label">
+                <span>Prediction Confidence</span>
+                <span style="color: #06b6d4; font-weight: 600;">{{ confidence }}%</span>
+            </div>
+            <div class="confidence-progress">
+                <div class="confidence-fill" style="width: {{ confidence }}%;"></div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(148, 163, 184, 0.1); border-radius: 8px; border-left: 4px solid #06b6d4;">
+            <h4 style="margin-bottom: 0.5rem; color: #06b6d4;">What This Means:</h4>
+            <p style="color: #cbd5e1; font-size: 0.95rem;">
+                {% if result_class == 'churn' %}
+                    The model predicts this customer has a {{ confidence }}% likelihood of churning. This is based on their usage patterns, contract type, services, and billing information.
+                {% else %}
+                    The model predicts this customer has only a {{ 100 - confidence|round(2) }}% likelihood of churning. They appear to be a satisfied, stable customer.
+                {% endif %}
+            </p>
+        </div>
+        
+        <div class="result-actions">
+            <a href="/predict" class="btn btn-primary">
+                <i class="fas fa-redo"></i> Make Another Prediction
+            </a>
+            <a href="/" class="btn btn-secondary">
+                <i class="fas fa-home"></i> Back Home
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

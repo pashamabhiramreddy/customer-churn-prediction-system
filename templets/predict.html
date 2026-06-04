@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction - Customer Churn Prediction System{% endblock %}
+
+{% block content %}
+<section class="prediction-container container">
+    <h2 class="section-title">Customer Information <span>Form</span></h2>
+    
+    <div class="form-wrapper">
+        <!-- Error Message Display -->
+        {% if error %}
+        <div class="error-message" style="display: block; margin-bottom: 1.5rem;">
+            <i class="fas fa-exclamation-circle"></i> {{ error }}
+        </div>
+        {% endif %}
+        
+        <form method="POST" action="/predict">
+            <!-- Personal Information -->
+            <div class="form-section-title">
+                <i class="fas fa-user"></i> Personal Information
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="gender">Gender <span style="color: #ef4444;">*</span></label>
+                    <select name="gender" id="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="senior_citizen">Senior Citizen <span style="color: #ef4444;">*</span></label>
+                    <select name="SeniorCitizen" id="senior_citizen" required>
+                        <option value="">Select</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="partner">Partner <span style="color: #ef4444;">*</span></label>
+                    <select name="Partner" id="partner" required>
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dependents">Dependents <span style="color: #ef4444;">*</span></label>
+                    <select name="Dependents" id="dependents" required>
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="tenure">Tenure (months) <span style="color: #ef4444;">*</span></label>
+                    <input type="number" name="tenure" id="tenure" min="0" max="72" placeholder="0-72" required>
+                </div>
+            </div>
+
+            <!-- Services -->
+            <div class="form-section-title">
+                <i class="fas fa-cog"></i> Services
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone_service">Phone Service <span style="color: #ef4444;">*</span></label>
+                    <select name="PhoneService" id="phone_service" required>
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="multiple_lines">Multiple Lines <span style="color: #ef4444;">*</span></label>
+                    <select name="MultipleLines" id="multiple_lines" required>
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No phone service">No phone service</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="internet_service">Internet Service <span style="color: #ef4444;">*</span></label>
+                    <select name="InternetService" id="internet_service" required>
+                        <option value="">Select</option>
+                        <option value="DSL">DSL</option>
+                        <option value="Fiber optic">Fiber optic</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="online_security">Online Security <span style="color: #ef4444;">*</span></label>
+                    <select name="OnlineSecurity" id="online_security" required>
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No internet service</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="online_backup">Online Backup <span style="color: #ef4444;">*</span></label>
+                    <select name="OnlineBackup" id="online_backup" required>
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No internet service</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="device_protection">Device Protection <span style="color: #ef4444;">*</span></label>
+                    <select name="DeviceProtection" id="device_protection" required>
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No internet service</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="tech_support">Tech Support <span style="color: #ef4444;">*</span></label>
+                    <select name="TechSupport" id="tech_support" required>
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No internet service</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="streaming_tv">Streaming TV <span style="color: #ef4444;">*</span></label>
+                    <select name="StreamingTV" id="streaming_tv" required>
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No internet service</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="streaming_movies">Streaming Movies <span style="color: #ef4444;">*</span></label>
+                    <select name="StreamingMovies" id="streaming_movies" required>
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No internet service</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Billing Information -->
+            <div class="form-section-title">
+                <i class="fas fa-credit-card"></i> Billing Information
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="contract">Contract <span style="color: #ef4444;">*</span></label>
+                    <select name="Contract" id="contract" required>
+                        <option value="">Select</option>
+                        <option value="Month-to-month">Month-to-month</option>
+                        <option value="One year">One year</option>
+                        <option value="Two year">Two year</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="paperless_billing">Paperless Billing <span style="color: #ef4444;">*</span></label>
+                    <select name="PaperlessBilling" id="paperless_billing" required>
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="payment_method">Payment Method <span style="color: #ef4444;">*</span></label>
+                    <select name="PaymentMethod" id="payment_method" required>
+                        <option value="">Select</option>
+                        <option value="Electronic check">Electronic check</option>
+                        <option value="Mailed check">Mailed check</option>
+                        <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+                        <option value="Credit card (automatic)">Credit card (automatic)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="monthly_charges">Monthly Charges ($) <span style="color: #ef4444;">*</span></label>
+                    <input type="number" name="MonthlyCharges" id="monthly_charges" step="0.01" min="0" placeholder="0.00" required>
+                </div>
+                <div class="form-group">
+                    <label for="total_charges">Total Charges ($) <span style="color: #ef4444;">*</span></label>
+                    <input type="number" name="TotalCharges" id="total_charges" step="0.01" min="0" placeholder="0.00" required>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-button">
+                <i class="fas fa-sparkles"></i> Predict Churn
+            </button>
+        </form>
+    </div>
+</section>
+{% endblock %}

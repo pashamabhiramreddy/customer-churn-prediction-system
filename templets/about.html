@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}About - Customer Churn Prediction System{% endblock %}
+
+{% block content %}
+<section class="container about">
+    <h2 class="section-title">About <span>ChurnPredict</span></h2>
+    
+    <!-- Main About Cards -->
+    <div class="about-grid">
+        <div class="about-card">
+            <h3><i class="fas fa-info-circle"></i> What We Do</h3>
+            <p>ChurnPredict is an advanced machine learning application that analyzes customer data to predict the likelihood of customer churn. Using a Random Forest classifier trained on real-world customer data, we provide accurate predictions to help businesses retain their valued customers.</p>
+        </div>
+        <div class="about-card">
+            <h3><i class="fas fa-graduation-cap"></i> Our Mission</h3>
+            <p>Our mission is to empower businesses with data-driven insights to understand customer behavior and make proactive decisions. By identifying at-risk customers early, companies can implement targeted retention strategies and improve customer lifetime value.</p>
+        </div>
+        <div class="about-card">
+            <h3><i class="fas fa-rocket"></i> Why Churn Prediction Matters</h3>
+            <p>Customer churn directly impacts revenue and growth. It costs 5-25x more to acquire a new customer than to retain an existing one. Our system helps you identify and retain high-value customers before they leave.</p>
+        </div>
+    </div>
+
+    <!-- Model Statistics -->
+    <div class="workflow" style="margin-top: 3rem;">
+        <h3 style="text-align: center; margin-bottom: 2rem;"><i class="fas fa-chart-bar"></i> Model Performance</h3>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">{{ stats.accuracy }}%</div>
+                <div class="stat-label">Accuracy Score</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ stats.dataset_size }}</div>
+                <div class="stat-label">Training Records</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ stats.features }}</div>
+                <div class="stat-label">Features Analyzed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number"><i class="fas fa-tree"></i></div>
+                <div class="stat-label">{{ stats.algorithm }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="workflow" style="margin-top: 3rem;">
+        <h3 style="text-align: center; margin-bottom: 2rem;"><i class="fas fa-cogs"></i> How It Works</h3>
+        <div class="workflow-steps">
+            <div class="step">
+                <div class="step-number"><i class="fas fa-database"></i></div>
+                <h4>Data Input</h4>
+                <p>You provide customer information including demographics, services used, and billing details.</p>
+            </div>
+            <div class="step">
+                <div class="step-number"><i class="fas fa-sliders-h"></i></div>
+                <h4>Feature Engineering</h4>
+                <p>Our system processes and normalizes the data, encoding categorical variables using the same methodology as our training phase.</p>
+            </div>
+            <div class="step">
+                <div class="step-number"><i class="fas fa-brain"></i></div>
+                <h4>Model Prediction</h4>
+                <p>The trained Random Forest model analyzes all 19 features and generates a churn probability prediction.</p>
+            </div>
+            <div class="step">
+                <div class="step-number"><i class="fas fa-lightbulb"></i></div>
+                <h4>Actionable Results</h4>
+                <p>You receive a clear prediction with confidence score and can take targeted retention actions.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Features -->
+    <div class="workflow" style="margin-top: 3rem;">
+        <h3 style="text-align: center; margin-bottom: 2rem;"><i class="fas fa-star"></i> Key Features</h3>
+        <div class="workflow-steps">
+            <div class="step">
+                <h4><i class="fas fa-check-circle"></i> High Accuracy</h4>
+                <p>Achieves {{ stats.accuracy }}% accuracy on test data using advanced Random Forest algorithm</p>
+            </div>
+            <div class="step">
+                <h4><i class="fas fa-bolt"></i> Real-time Processing</h4>
+                <p>Get instant predictions in seconds with our optimized model inference</p>
+            </div>
+            <div class="step">
+                <h4><i class="fas fa-lock"></i> Privacy-First</h4>
+                <p>Your data is processed securely and never stored. Each prediction is independent and anonymous</p>
+            </div>
+            <div class="step">
+                <h4><i class="fas fa-chart-line"></i> Confidence Scores</h4>
+                <p>See prediction confidence percentages to understand model certainty for each prediction</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technology Stack -->
+    <div class="workflow" style="margin-top: 3rem;">
+        <h3 style="text-align: center; margin-bottom: 2rem;"><i class="fas fa-code"></i> Technology Stack</h3>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3><i class="fas fa-python"></i> Python</h3>
+                <p>Core language for data processing and machine learning implementation</p>
+            </div>
+            <div class="about-card">
+                <h3><i class="fas fa-flask"></i> Flask</h3>
+                <p>Lightweight web framework for building our responsive API and web application</p>
+            </div>
+            <div class="about-card">
+                <h3><i class="fas fa-leaf"></i> Scikit-Learn</h3>
+                <p>Machine learning library providing Random Forest and preprocessing tools</p>
+            </div>
+            <div class="about-card">
+                <h3><i class="fas fa-paint-brush"></i> Modern Web UI</h3>
+                <p>HTML5, CSS3, and JavaScript for beautiful, responsive user interface</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div style="text-align: center; margin-top: 4rem; padding: 3rem; background: rgba(30, 58, 138, 0.1); border: 1px solid rgba(6, 182, 212, 0.2); border-radius: 15px;">
+        <h3 style="margin-bottom: 1rem; font-size: 1.8rem;">Ready to Predict Customer Churn?</h3>
+        <p style="color: #cbd5e1; margin-bottom: 2rem; font-size: 1.1rem;">Start by entering customer information and let our AI do the rest.</p>
+        <a href="/predict" class="btn btn-primary">
+            <i class="fas fa-arrow-right"></i> Go to Prediction
+        </a>
+    </div>
+</section>
+{% endblock %}
