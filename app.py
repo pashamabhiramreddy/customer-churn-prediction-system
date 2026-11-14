@@ -46,8 +46,8 @@ feature_order = [
 
 # Dashboard statistics
 STATS = {
-    "accuracy": 78.82,
-    "dataset_size": 7032,
+    "accuracy": 96.37,
+    "dataset_size": 69880,
     "features": 19,
     "algorithm": "Random Forest"
 }
@@ -55,7 +55,7 @@ STATS = {
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("home.html", stats=STATS)
 
 
 @app.route("/test")
